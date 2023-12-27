@@ -1,5 +1,33 @@
 # DIO - Trilha .NET - Fundamentos
-www.dio.me
+[DIO](www.dio.me)
+
+# Minhas Implementações
+
+Dada a simplicidade do desafio, que já vem semipronto e só pede para implementar 3 funções - adicionar veículos a uma lista, ler a lista, exibir os veículos cadastrados e remover um veículo - de uma forma muito simples: no projeto inicial, o sistema vai pedir para o usuário digitar quantas horas o veículo passou estacionado. Decidi remover essa obrigação do usuário e deixar que o próprio sistema determine o tempo que o carro passou dentro do estacionamento. Isso me levou a estudar mais a linguagem e descobrir o método Subtract, a classe TimeSpan, entre outros, além do que foi ensinado nas aulas do bootcamp. Seguem as implementações e, ao final delas, o descritivo original do desafio.
+
+### Implementações
+
+ - Primeiramente, criei uma classe chamada Entrada, que registra a placa do veículo e a hora de sua entrada no estacionamento.
+ - Alterei o tipo da lista que guarda os veículos estacionados para o tipo Entrada, que foi criado no sistema.
+#### Método AdicionarVeiculo
+ - No método AdicionarVeiculo, eu crio uma instância da classe Entrada.
+ - Solicito a placa do veículo ao usuário (que já vem pronto do repositório forkado do desafio) e a armazeno como uma string na propriedade Placa da classe Entrada.
+ - Registro o momento da entrada utilizando o método Now da classe DateTime e armazeno na propriedade Hora da classe Entrada.
+ - Adiciono a instância da classe Entrada na lista de veículos.
+#### Método RemoverVeiculo
+ - Solicito a placa do veículo.
+ - Crio uma instância da classe Entrada.
+ - Verifico com a condicional se o retorno do método Find é diferente de nulo.
+ - Dentro da condicional, capturo o momento da saída do veículo.
+ - Utilizo o método Subtract para criar um objeto TimeSpan.
+ - Armazeno a diferença em minutos como um número inteiro.
+ - Realizo cálculos para verificar o valor final.
+ - Utilizo o método Remove para remover o objeto retornado pelo método Find da lista.
+#### Método ListarVeiculos
+ - Loop que percorre a lista e imprime no console a placa de cada veículo ainda dentro do estacionamento e a hora de sua entrada.
+
+# Descritivo Original do Desafio
+
 
 ## Desafio de projeto
 Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de fundamentos, da trilha .NET da DIO.
@@ -36,3 +64,6 @@ Por último, deverá ser feito um menu interativo com as seguintes ações imple
 
 ## Solução
 O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+
+
+
