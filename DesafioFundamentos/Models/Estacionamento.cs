@@ -30,12 +30,11 @@ namespace DesafioFundamentos.Models
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
             string placa = Console.ReadLine()!;
-
-            if (veiculos.Any(x => x.Placa!.ToUpper() == placa.ToUpper()))
+            Entrada entrada = new Entrada();
+            Entrada removerVeiculo = veiculos.Find(entrada => entrada.Placa == placa)!;
+            if (removerVeiculo != null)
             {
-                Entrada entrada = new Entrada();
                 DateTime saida = DateTime.Now;
-                Entrada removerVeiculo = veiculos.Find(entrada => entrada.Placa == placa)!;
                 TimeSpan tempoPassado = saida.Subtract(removerVeiculo.Hora);
                 int x = tempoPassado.Minutes;
                 decimal valorTotal = precoInicial + x * (precoPorHora/60);
@@ -48,8 +47,7 @@ namespace DesafioFundamentos.Models
                     Console.WriteLine("Ocorreu erro no remoção do vaículo");
                 }
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
-            }
-            else
+            }else
             {
                 Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
             }
