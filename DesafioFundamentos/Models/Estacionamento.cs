@@ -34,18 +34,18 @@ namespace DesafioFundamentos.Models
             if (veiculos.Any(x => x.Placa!.ToUpper() == placa.ToUpper()))
             {
                 Entrada entrada = new Entrada();
-                Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-                string qtdHoras = Console.ReadLine()!;
-                int.TryParse(qtdHoras, out int x);
+                DateTime saida = DateTime.Now;
                 Entrada removerVeiculo = veiculos.Find(entrada => entrada.Placa == placa)!;
-                decimal valorTotal = precoInicial + x * precoPorHora;
+                TimeSpan tempoPassado = saida.Subtract(removerVeiculo.Hora);
+                int x = tempoPassado.Minutes;
+                decimal valorTotal = precoInicial + x * (precoPorHora/60);
                 try
                 {
                     veiculos.Remove(removerVeiculo);
                 }
-                catch (Exception erro)
+                catch (Exception)
                 {
-                    Console.WriteLine(erro.Message);
+                    Console.WriteLine("Ocorreu erro no remoção do vaículo");
                 }
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
